@@ -4,3 +4,4 @@ KurssiIlmo on nettiselaimen kautta toimiva sovellus, jolla opiskelijat voivat tu
 
 Opiskelijan on ensin rekisteröidyttävä sivulle, jotta hän pääsee ilmoittautumaan kursseille.
 
+[Hyvin alustava tietokantakaavio](https://github.com/henripalin/KurssiIlmo/blob/master/dokumentaatio/tietokantakaavio.png)

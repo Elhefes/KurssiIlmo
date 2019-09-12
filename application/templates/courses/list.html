@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block body %}
+  <table>
+    <tr>
+      <th>Kurssi</th>
+      <th>Aika</th>
+      <th>Ilmoittaudu</th>
+    </tr>
+    {% for course in courses %}
+    <tr>
+      <td>{{ course.name }}</td>
+      <td>{{ course.time }}</td>
+      <td>{{ course.done }}</td>
+      <td>
+        <form method="POST" action="{{ url_for('courses_enroll', course_id=course.id) }}">
+          <input type="submit" value="Vaihda tilaa"/>
+        </form>
+      </td>
+    </tr>
+    {% endfor %}
+  </table>
+{% endblock %}

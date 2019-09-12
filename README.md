@@ -8,4 +8,4 @@ Opiskelija voi tarkastella kursseja, joihin hän on ilmoittautunut. Hän voi my�
 
 Kurssien järjestejälle on oma rekisteröityminen. Järjestejät voivat lisätä, muokata ja poistaa kursseja. He voivat tarkastella myös kurssillensa ilmoittautuneita henkilöitä.
 
-[Hyvin alustava tietokantakaavio](https://github.com/henripalin/KurssiIlmo/blob/master/dokumentaatio/tietokantakaavio.png)
+[Alustava tietokantakaavio](https://github.com/henripalin/KurssiIlmo/blob/master/dokumentaatio/tietokanta_kaavio.png)

@@ -1,6 +1,6 @@
 # KurssiIlmo
 
-KurssiIlmo on nettiselaimen kautta toimiva sovellus, jolla käyttäjät voivat ilmoittautua toisten käyttäjien järjestämille kursseille. Ohjelma on käytettävissä [Herokussa](https://kurssiilmo.herokuapp.com/courses).
+KurssiIlmo on nettiselaimen kautta toimiva sovellus, jolla käyttäjät voivat vaivattomasti luoda omia kursseja sekä ilmoittautua toisten käyttäjien järjestämille kursseille. Ohjelma on käytettävissä nettiselaimella [Herokussa](https://kurssiilmo.herokuapp.com/courses).
 
 Käyttäjän on ensin rekisteröidyttävä sivulle, jotta hän pääsee ilmoittautumaan kursseille. Tämän jälkeen hän pääsee selaamaan kurssivalikoimaa, näkemään kurssitietoja ja valitsemaan sieltä mieleisiä kursseja. Mikäli kurssi on maksullinen, voidaan käyttäjä saa "laskun" jossa näkyy maksun saajan tilinumero sekä hinta.
 

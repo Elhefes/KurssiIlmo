@@ -4,17 +4,21 @@
   <table>
     <tr>
       <th>Kurssi</th>
-      <th>Aika</th>
-      <th>Ilmoittaudu</th>
+      <th>Paikka</th>
+      <th>Kurssi alkaa</th>
+      <th>Kurssi loppuu</th>
+      <th>Kuvaus</th>
     </tr>
     {% for course in courses %}
     <tr>
       <td>{{ course.name }}</td>
-      <td>{{ course.time }}</td>
-      <td>{{ course.done }}</td>
+      <td>{{ course.location }}</td>
+      <td>{{ course.startingDate }}</td>
+      <td>{{ course.endingDate }}</td>
+      <td>{{ course.description }}</td>
       <td>
         <form method="POST" action="{{ url_for('courses_enroll', course_id=course.id) }}">
-          <input type="submit" value="Vaihda tilaa"/>
+          <input type="submit" value="Muokkaa kurssia"/>
         </form>
       </td>
     </tr>

@@ -1,14 +1,17 @@
+from flask import render_template, request, redirect, url_for
+from datetime import datetime
+
 from application import app, db
-from flask import redirect, render_template, request, url_for
 from application.courses.models import Course
+from application.courses.forms import CourseForm
+
+@app.route("/courses/new/")
+def courses_form():
+    return render_template("courses/new.html", form = CourseForm())
 
 @app.route("/courses", methods=["GET"])
 def courses_index():
     return render_template("courses/list.html", courses = Course.query.all())
-
-@app.route("/courses/new/")
-def courses_form():
-    return render_template("courses/new.html")
 
 @app.route("/courses/<course_id>/", methods=["POST"])
 def courses_enroll(course_id):
@@ -24,7 +27,13 @@ def courses_enroll(course_id):
 
 @app.route("/courses/", methods=["POST"])
 def courses_create():
-    t = Course(request.form.get("name"), request.form.get("time"))
+    form = CourseForm(request.form)
+
+    if not form.validate():
+        return render_template("courses/new.html", form = form)
+
+    t = Course(form.name.data, form.location.data,
+    form.startingDate.data, form.endingDate.data, form.description.data)
 
     db.session().add(t)
     db.session().commit()

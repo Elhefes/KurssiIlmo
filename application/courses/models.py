@@ -9,6 +9,7 @@ class Course(db.Model):
     startingDate = db.Column(db.DateTime)
     endingDate = db.Column(db.DateTime)
     description = db.Column(db.String(144), nullable=False)
+    enroll = db.Column(db.Boolean, nullable=False)
 
     def __init__(self, name, location, startingDate, endingDate, description):
         self.name = name
@@ -16,3 +17,4 @@ class Course(db.Model):
         self.startingDate = startingDate
         self.endingDate = endingDate
         self.description = description
+        self.enroll = False

@@ -17,10 +17,19 @@ def courses_index():
 def courses_enroll(course_id):
 
     t = Course.query.get(course_id)
-    if t.done == False :
-        t.done = True
+    if t.enroll == False :
+        t.enroll = True
     else:
-        t.done = False
+        t.enroll = False
+    db.session().commit()
+  
+    return redirect(url_for("courses_index"))
+
+@app.route("/courses/<course_id>", methods=["POST"])
+def courses_edit(course_id):
+
+    t = Course.query.get(course_id)
+
     db.session().commit()
   
     return redirect(url_for("courses_index"))

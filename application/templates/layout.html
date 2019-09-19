@@ -6,20 +6,22 @@
     </head>
     
     <body>
-      {% if current_user.is_authenticated %}
-      <p>
-	Kirjautunut nimellä {{ current_user.name }}
-      </p>
-      {% else %}
-      <a href="{{ url_for('auth_login') }}">Kirjaudu</a>
-      <a href="{{ url_for('courses_index') }}">Listaa kurssit</a>
-      <a href="{{ url_for('courses_form') }}">Lisää kurssi</a>
-      {% endif %}
 
+        {% if current_user.is_authenticated %}
+          <p>
+            Kirjautunut nimellä {{ current_user.name }}. <a href="{{ url_for('auth_logout') }}">Kirjaudu ulos</a>
+          </p>
+        {% else %}
+          <a href="{{ url_for('auth_login') }}">Kirjaudu</a>
+        {% endif %}
+      <ul>
+        <a href="{{ url_for('courses_index') }}">Listaa kurssit</a>
+        <a href="{{ url_for('courses_form') }}">Lisää kurssi</a>
+      </ul>
       
       {% block body %}
       <p>
-	Content.
+	      Content.
       </p>
       {% endblock %}
     </body>

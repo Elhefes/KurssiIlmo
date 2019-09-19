@@ -8,6 +8,7 @@
       <th>Kurssi alkaa</th>
       <th>Kurssi loppuu</th>
       <th>Kuvaus</th>
+      <th>Ilmoittaudu</th>
     </tr>
     {% for course in courses %}
     <tr>
@@ -16,9 +17,11 @@
       <td>{{ course.startingDate }}</td>
       <td>{{ course.endingDate }}</td>
       <td>{{ course.description }}</td>
+      <td>{{ course.enroll }}</td>
       <td>
+        
         <form method="POST" action="{{ url_for('courses_enroll', course_id=course.id) }}">
-          <input type="submit" value="Muokkaa kurssia"/>
+          <input type="submit" value="Ilmoittaudu"/>
         </form>
       </td>
     </tr>

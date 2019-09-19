@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, validators, DateField, TextAreaField
+from wtforms import BooleanField, StringField, validators, DateField, TextAreaField
 from datetime import datetime
 
 class CourseForm(FlaskForm):
@@ -8,6 +8,7 @@ class CourseForm(FlaskForm):
     startingDate = DateField('Alku', [validators.InputRequired(message='Kurssin aika')], default=datetime.now())
     endingDate = DateField('Loppu', [validators.InputRequired(message='Kurssin aika')], default=datetime.now())
     description = TextAreaField('Kuvaus', [validators.Length(min=2)])
+    enroll = BooleanField("Done")
 
     class Meta:
         csrf = False

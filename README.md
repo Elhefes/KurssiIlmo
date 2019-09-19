@@ -4,7 +4,7 @@ KurssiIlmo on nettiselaimen kautta toimiva sovellus, jolla käyttäjät voivat v
 
 Käyttäjän on ensin rekisteröidyttävä sivulle, jotta hän pääsee ilmoittautumaan kursseille. Tämän jälkeen hän pääsee selaamaan kurssivalikoimaa, näkemään kurssitietoja ja valitsemaan sieltä mieleisiä kursseja. Mikäli kurssi on maksullinen, voidaan käyttäjä saa "laskun" jossa näkyy maksun saajan tilinumero sekä hinta.
 
-Kuka tahansa voi myös luoda omia kursseja. Se tapahtuu ohjelmassa erilaisella lomakkeella, johon syötetään kurssin tiedot, kuten nimi, paikka, aika sekä kurssin nkuvaus ja hinta. Järjestäjä pystyy myös tarkastelemaan kursseillensa ilmoittautuneita henkilöitä.
+Kuka tahansa voi myös luoda omia kursseja. Se tapahtuu ohjelmassa erilaisella lomakkeella, johon syötetään kurssin tiedot, kuten nimi, paikka, aika sekä kurssin kuvaus ja hinta. Järjestäjä pystyy myös tarkastelemaan kursseillensa ilmoittautuneita henkilöitä.
 
 Käyttäjä voi myös tarkastella kursseja, joihin hän on ilmoittautunut. Hän voi myöskin poistaa omia ilmoittautumisiaan.
 

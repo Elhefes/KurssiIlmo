@@ -1,14 +1,11 @@
 # KurssiIlmon käyttötapaukset
-Sovelluksessa on kahdenlaisia käyttäjiä, ns. "normaalikäyttäjät" (henkilöasiakkaat) sekä kurssijärjestejät. Kurssijärjestäjät voivat olla esimerkiksi organisaatioita tai kouluja.
+Sovelluksessa on yhdenlaisia käyttäjiä. Kaikki siis voivat sekä ilmoittautua kursseille, sekä järjestää omia kursseja.
 
-## Henkilöasiakas voi:
+## Sovelluksen käyttäjä voi:
 * rekisteröityä ja kirjautua sivulle
 * ilmoittautua kursseille sekä poistaa ilmoittautumisiaan
 * nähdä listan kaikista kursseista, johon on ilmoittautunut
-* selata avoimia sekä maksettuja laskujaan
-
-## Kurssijärjestäjä voi:
-* rekisteröityä sekä kirjautua sivulle
+* selata omia avoimia sekä maksettuja laskujaan
 * luoda uusia kursseja sekä poistaa niitä
 * muokata kurssinsa tietoja (esimerkiksi kuvausta tai päivämääriä)
-* saa yhteenvedon kurssillensa ilmoittautuneiden tiedoista
+* saada yhteenvedon kurssillensa ilmoittautuneiden tiedoista

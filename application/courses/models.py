@@ -11,6 +11,9 @@ class Course(db.Model):
     description = db.Column(db.String(144), nullable=False)
     enroll = db.Column(db.Boolean, nullable=False)
 
+    account_id = db.Column(db.Integer, db.ForeignKey('account.id'),
+                           nullable=False)
+
     def __init__(self, name, location, startingDate, endingDate, description):
         self.name = name
         self.location = location

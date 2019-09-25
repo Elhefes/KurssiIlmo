@@ -4,7 +4,9 @@
   <table>
     <tr>
       <th>Kurssi</th>
+      <th>Järjestäjä</th>
       <th>Paikka</th>
+      <th>Hinta</th>
       <th>Kurssi alkaa</th>
       <th>Kurssi loppuu</th>
       <th>Kuvaus</th>
@@ -13,7 +15,9 @@
     {% for course in courses %}
     <tr>
       <td>{{ course.name }}</td>
+      <td>{{ course.get_organiser_name() }}</td>
       <td>{{ course.location }}</td>
+      <td>{{ course.price }}€</td>
       <td>{{ course.startingDate }}</td>
       <td>{{ course.endingDate }}</td>
       <td>{{ course.description }}</td>

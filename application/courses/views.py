@@ -47,7 +47,9 @@ def courses_create():
         return render_template("courses/new.html", form = form)
 
     t = Course(form.name.data, form.location.data,
-    form.startingDate.data, form.endingDate.data, form.description.data)
+    form.startingDate.data, form.endingDate.data, 
+    form.description.data, form.price.data)
+    
     t.account_id = current_user.id
 
     db.session().add(t)

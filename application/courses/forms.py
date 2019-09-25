@@ -8,6 +8,7 @@ class CourseForm(FlaskForm):
     startingDate = DateField('Alku', [validators.InputRequired(message='Kurssin aika')], default=datetime.now())
     endingDate = DateField('Loppu', [validators.InputRequired(message='Kurssin aika')], default=datetime.now())
     description = TextAreaField('Kuvaus', [validators.Length(min=2)])
+    price = StringField('Hinta')
     enroll = BooleanField("Done")
 
     class Meta:

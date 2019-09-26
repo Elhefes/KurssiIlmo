@@ -1,12 +1,12 @@
+
 {% extends "layout.html" %}
 
 {% block body %}
-<form method="POST" action="{{ url_for('course_enroll'), course_id=course.id }}">
 <table>
     <tr>
       <ul>
         <h1>{{ course.name }}</h1>
-        <h2>{{ course.get_organiser_name() }}</h2>
+        <h2>{{ course.get_organiser_name() }}</h2>
         <b>
           {{ course.startingDate.day }}.{{ course.startingDate.month }}.{{ course.startingDate.year }}
           - {{ course.endingDate.day }}.{{ course.endingDate.month }}.{{ course.endingDate.year }}
@@ -21,13 +21,14 @@
           </ul>
           <ul>
               Hinta {{course.price}}€
-            </ul>
+          </ul>
     </tr>
     <tr>
 <td colspan="2">
-  <input type="submit" value="Ilmoittaudu kurssille"/>
+  <ul>
+    <input type="submit" value="Ilmoittaudu kurssille"/>
+  </ul>
 </td>
     </tr>
 </table>
-</form>
 {% endblock %}

@@ -1,3 +1,4 @@
+
 from flask import render_template, request, redirect, url_for
 from datetime import datetime
 from flask_login import login_required, current_user
@@ -20,7 +21,7 @@ def courses_index():
 
 @app.route("/courses/<course_id>/", methods=["POST"])
 @login_required
-def courses_enrollq(course_id):
+def courses_enroll(course_id):
 
     t = Course.query.get(course_id)
     if t.enroll == False :
@@ -32,15 +33,13 @@ def courses_enrollq(course_id):
     return redirect(url_for("courses_index"))
 
 @app.route("/courses/<course_id>/enrolment", methods=["POST"])
+
 def courses_info(course_id):
-    form = EnrolmentForm(request.form)
     course = Course.query.get(course_id)
-    if not form.validate():
-        return render_template("courses/enroll.html", course = course, form = EnrolmentForm)
-    t = Enrolment(course_id, current_user.id)
-    db.session().add(t)
-    db.session().commit()
-    return redirect(url_for("courses_index"))
+    info = Course.query.filter_by(id=course_id).first()
+
+  
+    return render_template("courses/enroll.html", course = course)
 
 @app.route("/courses/<course_id>", methods=["POST"])
 @login_required
@@ -68,12 +67,5 @@ def courses_create():
 
     db.session().add(t)
     db.session().commit()
-  
-    return redirect(url_for("courses_index"))
-
-@app.route("/courses/<course_id>/enrolment", methods=["POST"])
-@login_required
-def course_enroll(course_id):
-
   
     return redirect(url_for("courses_index"))

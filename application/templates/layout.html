@@ -11,7 +11,7 @@
 <body>
 
   <nav class="navbar navbar-expand light mb-4" style="background-color: #1d0f63;">
-    <a class="navbar-brand" href="#">KurssiIlmo</a>
+    <a class="navbar-brand" href="{{ url_for('index') }} ">KurssiIlmo</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
       aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -22,7 +22,7 @@
           <a class="nav-link" href="{{ url_for('courses_index') }} ">Kurssitarjonta</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{ url_for('courses_form') }} ">Omat ilmoittautumiset</a>
+          <a class="nav-link" href="{{ url_for('index') }}">Omat ilmoittautumiset</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="{{ url_for('courses_form') }} ">Lisää kurssi</a>

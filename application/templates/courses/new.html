@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block body %}
-<form method="POST" action="{{ url_for('courses_create'), course_id=course.id }}">
+<form method="POST" action="{{ url_for('courses_create') }}">
   <table>
     <tr>
         <h1>Uusi kurssi</h1>

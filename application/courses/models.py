@@ -29,7 +29,8 @@ class Course(db.Model):
 
     def get_organiser_name(self):
         
-        stmt = text("SELECT Account.name FROM Account JOIN Course ON Account.id = Course.account_id")
+        stmt = text("SELECT Account.name FROM Account JOIN Course ON Account.id"
+                    "= Course.account_id WHERE Course.id = :id").params(id=self.id)
         res = db.engine.execute(stmt)
         for row in res:
             return row[0]

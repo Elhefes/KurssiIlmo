@@ -1,15 +1,13 @@
 {% extends "layout.html" %}
 
 {% block body %}
-  <table>
+<table class="table table-light">
     <tr>
       <th>Kurssi</th>
       <th>Järjestäjä</th>
       <th>Paikka</th>
       <th>Hinta</th>
-      <th>Kurssi alkaa</th>
-      <th>Kurssi loppuu</th>
-      <th>Kuvaus</th>
+      <th>Aika</th>
       <th>Ilmoittaudu</th>
     </tr>
     {% for course in courses %}
@@ -18,13 +16,12 @@
       <td>{{ course.get_organiser_name() }}</td>
       <td>{{ course.location }}</td>
       <td>{{ course.price }}€</td>
-      <td>{{ course.startingDate }}</td>
-      <td>{{ course.endingDate }}</td>
-      <td>{{ course.description }}</td>
+      <td width= "200">{{ course.startingDate.day }}.{{ course.startingDate.month }}.{{ course.startingDate.year }}
+          - {{ course.endingDate.day }}.{{ course.endingDate.month }}.{{ course.endingDate.year }}</td>
       <td>{{ course.enroll }}</td>
       <td>
         
-        <form method="POST" action="{{ url_for('courses_enroll', course_id=course.id) }}">
+        <form method="POST" action="{{ url_for('courses_info', course_id=course.id) }}">
           <input type="submit" value="Ilmoittaudu"/>
         </form>
       </td>

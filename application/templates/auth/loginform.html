@@ -1,8 +1,11 @@
 {% extends "layout.html" %}
 
 {% block body %}
+
 {{ error }}
+
 <form method="POST" action="{{ url_for('auth_login') }}">
+      
   <table>
     <tr>
       <td>
@@ -25,5 +28,7 @@
 	<input type="submit" value="Kirjaudu"/>
       </td>
     </tr>
+    
 </form>
+
 {% endblock %}

@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<table>
+    <tr>
+      <ul>
+        <h1>{{ course.name }}</h1>
+        <h2>{{ course.get_organiser_name() }}</h2>
+        <b>
+          {{ course.startingDate.day }}.{{ course.startingDate.month }}.{{ course.startingDate.year }}
+          - {{ course.endingDate.day }}.{{ course.endingDate.month }}.{{ course.endingDate.year }}
+        </b>
+        <ul>
+          Sijainti: {{ course.location }}
+        </ul>
+      </ul>
+        
+        <ul>
+            <h2>Kuvaus</h2> {{course.description}}
+          </ul>
+          <ul>
+              Hinta {{course.price}}€
+            </ul>
+    </tr>
+    <tr>
+<td colspan="2">
+  <input type="submit" value="Ilmoittaudu kurssille"/>
+</td>
+    </tr>
+</table>
+{% endblock %}

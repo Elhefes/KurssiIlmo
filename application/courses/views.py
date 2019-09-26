@@ -6,6 +6,9 @@ from application import app, db
 from application.courses.models import Course
 from application.courses.forms import CourseForm
 
+from application.enrolment.models import Enrolment
+from application.enrolment.forms import EnrolmentForm
+
 @app.route("/courses/new/")
 @login_required
 def courses_form():
@@ -27,6 +30,15 @@ def courses_enroll(course_id):
     db.session().commit()
   
     return redirect(url_for("courses_index"))
+
+@app.route("/courses/<course_id>/enrolment", methods=["POST"])
+
+def courses_info(course_id):
+    course = Course.query.get(course_id)
+    info = Course.query.filter_by(id=course_id).first()
+
+  
+    return render_template("courses/enroll.html", course = course)
 
 @app.route("/courses/<course_id>", methods=["POST"])
 @login_required

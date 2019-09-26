@@ -19,7 +19,10 @@
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <a class="nav-link" href="{{ url_for('courses_index') }} ">Listaa kurssit</a>
+          <a class="nav-link" href="{{ url_for('courses_index') }} ">Kurssitarjonta</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('courses_form') }} ">Omat ilmoittautumiset</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="{{ url_for('courses_form') }} ">Lisää kurssi</a>
@@ -29,6 +32,7 @@
         {% if current_user.is_authenticated %}
         <a href="{{ url_for('auth_logout') }}">Hei, {{ current_user.name }} -- Kirjaudu ulos</a>
         {% else %}
+        <a href= "{{ url_for('auth_register') }}">Rekisteröidy</a>
         <a href="{{ url_for('auth_login') }}">Kirjaudu</a>
         {% endif %}
       </div>

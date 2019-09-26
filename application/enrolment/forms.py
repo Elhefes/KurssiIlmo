@@ -3,7 +3,7 @@ from wtforms import PasswordField, StringField
   
 class EnrolmentForm(FlaskForm):
     username = StringField("Käyttäjätunnus")
-    password = PasswordField("Salasana")
+
   
     class Meta:
         csrf = False

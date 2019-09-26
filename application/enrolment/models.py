@@ -15,8 +15,9 @@ class Enrolment(db.Model):
     account_id = db.Column(db.Integer, db.ForeignKey('account.id'),
                            nullable=False)
 
-    def __init__(self, name):
-        self.name = name
+    def __init__(self, course_id, account_id):
+        self.course_id = course_id
+        self.account_id = account_id
   
     def get_id(self):
         return self.id

@@ -1,6 +1,7 @@
 {% extends "layout.html" %}
 
 {% block body %}
+<form method="POST" action="{{ url_for('course_enroll'), course_id=course.id }}">
 <table>
     <tr>
       <ul>
@@ -28,4 +29,5 @@
 </td>
     </tr>
 </table>
+</form>
 {% endblock %}

@@ -28,3 +28,5 @@ Seuraavaksi täytyy ajaa seuraavat komennot:
 Tämän jälkeen pääset ajamaan ohjelmaa komennolla
 
 ```python run.py```
+
+Nyt pääset kokeilemaan ohjelmaa osoitteessa localhost:5000.

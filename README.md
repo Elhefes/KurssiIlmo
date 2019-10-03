@@ -11,6 +11,7 @@ Käyttäjä voi myös tarkastella kursseja, joihin hän on ilmoittautunut. Hän 
 
 ## Dokumentaatio
 
+* [Käyttöohje](https://github.com/henripalin/KurssiIlmo/blob/master/dokumentaatio/k%C3%A4ytt%C3%B6ohje.md)
 * [Alustava tietokantakaavio](https://github.com/henripalin/KurssiIlmo/blob/master/dokumentaatio/tietokantakaavio.png)
 * [Käyttötapaukset](https://github.com/henripalin/KurssiIlmo/blob/master/dokumentaatio/k%C3%A4ytt%C3%B6tapaukset.md)
 

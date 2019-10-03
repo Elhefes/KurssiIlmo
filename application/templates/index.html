@@ -3,6 +3,8 @@
 {% block body %}
   <p>
     <h1>KurssiIlmo</h1>
-    <h2>Yksinkertainen palvelu kurssien järjestämiseen ja niille ilmoittautumiseen</h2>
+    <h5>Yksinkertainen palvelu kurssien järjestämiseen ja niille ilmoittautumiseen</h5>
+    Käyttäjiä sovelluksella on {{ user.get_user_amount(user) }}, jotka ovat
+    perustaneet yhteensä {{ course.get_course_amount(course) }} kurssia.
   </p>
 {% endblock %}

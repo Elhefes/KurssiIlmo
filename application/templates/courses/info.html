@@ -11,11 +11,10 @@
           {{ course.startingDate.day }}.{{ course.startingDate.month }}.{{ course.startingDate.year }}
           - {{ course.endingDate.day }}.{{ course.endingDate.month }}.{{ course.endingDate.year }}
         </b>
-        <ul>
-          Sijainti: {{ course.location }}
-        </ul>
       </ul>
-        
+      <b>
+          Sijainti: {{ course.location }}
+        </b>
         <ul>
             <h2>Kuvaus</h2> {{course.description}}
           </ul>
@@ -24,11 +23,7 @@
           </ul>
     </tr>
     <tr>
-<td colspan="2">
-  <ul>
-    <input type="submit" value="Ilmoittaudu kurssille"/>
-  </ul>
-</td>
     </tr>
 </table>
+</form>
 {% endblock %}

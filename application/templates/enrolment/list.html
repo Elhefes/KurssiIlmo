@@ -2,6 +2,7 @@
 
 {% block body %}
 <table class="table table-light">
+  <h1>Ilmoittautumisesi</h1>
     <tr>
       <th>Kurssi</th>
       <th>Järjestäjä</th>
@@ -18,24 +19,8 @@
       <td width= "200">{{ course.startingDate.day }}.{{ course.startingDate.month }}.{{ course.startingDate.year }}
           - {{ course.endingDate.day }}.{{ course.endingDate.month }}.{{ course.endingDate.year }}</td>
       <td>
-        <form method="POST" action="{{ url_for('courses_info', course_id=course.id) }}">
-            <input type="submit" value="Lisätietoja"/>
-        </form>
+        
         {% if current_user.is_authenticated %}
-        {% if course.enroll==false %}
-        <form method="POST" action="{{ url_for('courses_enroll', course_id=course.id) }}">
-          <input type="submit" value="Ilmoittaudu"/>
-        </form>
-        {% else %}
-        <form method="POST" action="{{ url_for('courses_enroll', course_id=course.id) }}">
-          <input type="submit" value="Poista ilmoittautuminen"/>
-        </form>
-        {% endif %}
-        {% endif %}
-        {% if course.get_organiser_id() == current_user.id %}
-        <form method="POST" action="{{ url_for('courses_edit', course_id=course.id) }}">
-            <input type="submit" value="Muokkaa"/>
-        </form>
         <form method="POST" action="{{ url_for('courses_delete', course_id=course.id) }}">
           <input type="submit" value="Poista"/>
         </form>

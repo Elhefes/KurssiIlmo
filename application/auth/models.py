@@ -1,4 +1,5 @@
 from application import db
+from sqlalchemy.sql import text
 
 class User(db.Model):
 
@@ -31,3 +32,12 @@ class User(db.Model):
 
     def is_authenticated(self):
         return True
+
+    def get_user_amount(self):
+        stmt = text("SELECT COUNT(*) FROM Account")
+        res = db.engine.execute(stmt)
+        for row in res:
+            return row[0]
+
+    def roles(self):
+        return ["ADMIN"]

@@ -27,10 +27,26 @@ class Course(db.Model):
         self.price = price
         self.enroll = False
 
+    def edit(self, name, location, startingDate, endingDate, description, price):
+        return 0
+
     def get_organiser_name(self):
         
         stmt = text("SELECT Account.name FROM Account JOIN Course ON Account.id"
                     "= Course.account_id WHERE Course.id = :id").params(id=self.id)
+        res = db.engine.execute(stmt)
+        for row in res:
+            return row[0]
+
+    def get_organiser_id(self):
+        stmt = text("SELECT Account.id FROM Account JOIN Course ON Account.id"
+                    "= Course.account_id WHERE Course.id = :id").params(id=self.id)
+        res = db.engine.execute(stmt)
+        for row in res:
+            return row[0]
+
+    def get_course_amount(self):
+        stmt = text("SELECT COUNT(*) FROM Course")
         res = db.engine.execute(stmt)
         for row in res:
             return row[0]

@@ -1,4 +1,5 @@
 from application import db
+from sqlalchemy.sql import text
 
 class Enrolment(db.Model):
 
@@ -30,3 +31,9 @@ class Enrolment(db.Model):
 
     def is_authenticated(self):
         return True
+
+    def get_enrolment_id(course_id, account_id):
+        stmt = text("SELECT id FROM Enrolment WHERE course_id = :courseId AND account_id = :accountId").params(courseId=course_id, accountId=account_id)
+        res = db.engine.execute(stmt)
+        for row in res:
+            return row[0]

@@ -12,14 +12,18 @@
           - {{ course.endingDate.day }}.{{ course.endingDate.month }}.{{ course.endingDate.year }}
         </b>
       </ul>
-      <b>
+      <ul>
           Sijainti: {{ course.location }}
-        </b>
+      </ul>
         <ul>
             <h2>Kuvaus</h2> {{course.description}}
           </ul>
           <ul>
-              Hinta {{course.price}}€
+              Hinta {{course.price}}€<br>
+              <h2>OSALLISTUJAT</h2>
+              {% for row in course.get_enrollees() %}
+              <td>{{ row }}</td>
+              {% endfor %}
           </ul>
     </tr>
     <tr>

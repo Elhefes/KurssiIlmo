@@ -31,7 +31,6 @@ class Course(db.Model):
         return 0
 
     def get_organiser_name(self):
-        
         stmt = text("SELECT Account.name FROM Account JOIN Course ON Account.id"
                     "= Course.account_id WHERE Course.id = :id").params(id=self.id)
         res = db.engine.execute(stmt)
@@ -50,3 +49,12 @@ class Course(db.Model):
         res = db.engine.execute(stmt)
         for row in res:
             return row[0]
+
+    def get_enrollees(self):
+        stmt = text("SELECT Account.name FROM Account "
+                    "LEFT JOIN Enrolment ON Enrolment.account_id = Account.id "
+                    "WHERE Enrolment.course_id = :id "
+                    "GROUP BY Account.name").params(id=self.id)
+        res = db.engine.execute(stmt)
+
+        return res

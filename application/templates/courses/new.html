@@ -19,9 +19,24 @@
           <li>{{ error }}</li>
           {%endfor%}
         </ul>
-        {{"Kurssin alku- ja loppupäivämäärät muodossa vv-kk-pp"}} <br>
-        {{ form.startingDate }}
-        {{ form.endingDate }} <br><br>
+        <div class = "form-field-item">
+            <p>Alkaa</p>
+            <input 
+              name="startingDate"
+              type="date"
+            >
+          </div><br>
+          <div class = "form-field-item">
+            <p>Loppuu</p>
+            <input 
+              name="endingDate"
+              type="date"
+            >     
+          </div><br>
+          {% for error in form.startingDate.errors %}
+          <li>{{ error }}</li>
+          {%endfor%}
+        </ul>
         {{ form.description.label }} <br>
         {{ form.description(cols="50",rows="10") }} <br>
         <ul>
@@ -31,7 +46,11 @@
         </ul>
         {{ form.price.label }} <br>
         {{ form.price }}€ <br><br>
-        
+        <ul>
+          {% for error in form.price.errors %}
+          <li>{{ error }}</li>
+          {%endfor%}
+        </ul>
     </tr>
     <tr>
 <td colspan="2">

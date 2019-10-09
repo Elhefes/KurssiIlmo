@@ -33,7 +33,7 @@
         {% endif %}
         {% endif %}
         {% if course.get_organiser_id() == current_user.id %}
-        <form method="POST" action="{{ url_for('courses_edit', course_id=course.id) }}">
+        <form method="POST" action="{{ url_for('courses_edit_form', course_id=course.id) }}">
             <input type="submit" value="Muokkaa"/>
         </form>
         <form method="POST" action="{{ url_for('courses_delete', course_id=course.id) }}">

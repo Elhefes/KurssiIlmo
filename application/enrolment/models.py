@@ -37,3 +37,5 @@ class Enrolment(db.Model):
         res = db.engine.execute(stmt)
         for row in res:
             return row[0]
+
+    

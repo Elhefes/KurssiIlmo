@@ -56,5 +56,5 @@ class Course(db.Model):
                     "WHERE Enrolment.course_id = :id "
                     "GROUP BY Account.name").params(id=self.id)
         res = db.engine.execute(stmt)
-
+        
         return res

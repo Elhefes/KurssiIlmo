@@ -33,7 +33,7 @@ class User(db.Model):
     def is_authenticated(self):
         return True
 
-    def get_user_amount(self):
+    def get_user_amount():
         stmt = text("SELECT COUNT(*) FROM Account")
         res = db.engine.execute(stmt)
         for row in res:

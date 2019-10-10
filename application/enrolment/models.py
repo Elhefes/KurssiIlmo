@@ -38,4 +38,8 @@ class Enrolment(db.Model):
         for row in res:
             return row[0]
 
-    
+    def get_enrolment_amount():
+        stmt = text("SELECT COUNT(*) FROM Enrolment")
+        res = db.engine.execute(stmt)
+        for row in res:
+            return row[0]

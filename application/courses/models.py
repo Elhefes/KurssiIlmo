@@ -42,7 +42,7 @@ class Course(db.Model):
         for row in res:
             return row[0]
 
-    def get_course_amount(self):
+    def get_course_amount():
         stmt = text("SELECT COUNT(*) FROM Course")
         res = db.engine.execute(stmt)
         for row in res:

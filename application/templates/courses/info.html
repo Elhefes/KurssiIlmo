@@ -20,12 +20,12 @@
             {{course.description}}
           </ul>
           <ul>
-              <b>Hinta:</b> {{course.price}}€<br><br>
-              <b>Osallistujat:</b><br>
-              {% for e in course.get_enrollees() %}
-              -{{ e }}<br>
-              {% endfor %}
-            </ul>
+            <b>Hinta:</b> {{course.price}}€<br><br>
+            <b>Osallistujat:</b><br>
+            {% for e in course.get_enrollees() %}
+            -{{ e }}<br>
+            {% endfor %}
+          </ul>
     </tr>
     <tr>
     </tr>

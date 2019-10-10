@@ -4,21 +4,14 @@
 <table class="table table-light">
   <h1>Ilmoittautumisesi</h1>
     <tr>
-      <th>course id</th>
-      <th>account id</th>
+      <th>enrolment id</th>
 
     </tr>
     {% for enrolment in enrolments %}
     {% if current_user.id == enrolment.account_id %}
     <tr>
-      <td>{{ enrolment.course_id }}</td>
-      <td>{{ enrolment.account_id }}</td>
-        
-
+      <td>{{ enrolment.id }}</td>
       <td>
-        <form method="POST" action="{{ url_for('enrolments_index') }}">
-          <input type="submit" value="Kurssitiedot"/>
-        </form>
         <form method="POST" action="{{ url_for('enrolments_remove', course_id = enrolment.course_id) }}">
           <input type="submit" value="Poista"/>
         </form>

@@ -22,15 +22,15 @@
             <input type="submit" value="Lisätietoja"/>
         </form>
         {% if current_user.is_authenticated %}
-        {% if course.enroll==false %}
-        <form method="POST" action="{{ url_for('courses_enroll', course_id=course.id) }}">
-          <input type="submit" value="Ilmoittaudu"/>
-        </form>
-        {% else %}
-        <form method="POST" action="{{ url_for('courses_enroll', course_id=course.id) }}">
-          <input type="submit" value="Poista ilmoittautuminen"/>
-        </form>
-        {% endif %}
+          {% if course.has_user_enrolled() == false %}
+            <form method="POST" action="{{ url_for('enroll', course_id=course.id) }}">
+              <input type="submit" value="Ilmoittaudu"/>
+            </form>
+          {% elif course.has_user_enrolled() == true %}
+            <form method="POST" action="{{ url_for('remove_enrolment', course_id=course.id) }}">
+              <input type="submit" value="Poista ilmoittautuminen"/>
+            </form>
+          {% endif %}
         {% endif %}
         {% if course.get_organiser_id() == current_user.id %}
         <form method="POST" action="{{ url_for('courses_edit_form', course_id=course.id) }}">

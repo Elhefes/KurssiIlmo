@@ -3,12 +3,12 @@ from wtforms import BooleanField, StringField, validators, DateField, TextAreaFi
 from datetime import datetime
 
 class CourseForm(FlaskForm):
-    name = StringField("Kurssin nimi", [validators.Length(min=2, max=15, message='Kurssin nimen täytyy olla pituudeltaan 2-15 merkkiä!')])
-    location = StringField("Paikka", [validators.Length(min=2, max=15, message='Paikan nimen täytyy olla pituudeltaan 2-15 merkkiä!')])
+    name = StringField("Kurssin nimi", [validators.Length(min=1, max=50, message='Kurssin nimen täytyy olla pituudeltaan 1-50 merkkiä!')])
+    location = StringField("Paikka", [validators.Length(min=1, max=50, message='Paikan nimen täytyy olla pituudeltaan 1-50 merkkiä!')])
     startingDate = DateField('Alku', [validators.InputRequired(message='Kurssin aika')], default=datetime.now())
     endingDate = DateField('Loppu', [validators.InputRequired(message='Kurssin aika')], default=datetime.now())
-    description = TextAreaField('Kuvaus', [validators.Length(min=2, max=300, message='Kuvauksen täytyy olla pituudeltaan 2-300 merkkiä!')])
-    price = StringField('Hinta', default = "0")
+    description = TextAreaField('Kuvaus', [validators.Length(min=1, max=1000, message='Kuvauksen täytyy olla pituudeltaan 1-1000 merkkiä!')])
+    price = StringField('Hinta', default = "0.0")
     
     def validate_startingDate(form, field):
         if field.data > form.endingDate.data:

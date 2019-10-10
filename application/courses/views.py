@@ -17,7 +17,6 @@ def courses_form():
 @app.route("/courses/<course_id>/edit")
 @login_required
 def courses_edit_form(course_id):
-    print("OAWdOWAJDOAJWDOJAWDOJWODJO")
     c = Course.query.get(course_id)
     return render_template("courses/edit.html", form = CourseForm(), course = c, courseStart = 
         (str(c.startingDate.year)+"-"+str(c.startingDate.month)+"-"+str(c.startingDate.day)), courseEnd =
@@ -25,28 +24,7 @@ def courses_edit_form(course_id):
 
 @app.route("/courses", methods=["GET"])
 def courses_index():
-    return render_template("courses/list.html", courses = Course.query.all())
-
-@app.route("/courses/<course_id>/", methods=["POST"])
-@login_required
-def courses_enroll(course_id):
-
-    t = Course.query.get(course_id)
-
-    if t.enroll == False :
-        t.enroll = True
-        e = Enrolment(course_id, current_user.id)
-        db.session().add(e)
-        db.session().commit()
-    else:
-        enrolmentId = Enrolment.get_enrolment_id(course_id, current_user.id)
-        q = Enrolment.query.get(enrolmentId)
-        t.enroll = False
-        db.session.delete(q)
-    
-    db.session().commit()
-  
-    return redirect(url_for("courses_index"))
+    return render_template("courses/list.html", courses = Course.query.all(), enrolments = Enrolment.query.all())
 
 @app.route("/courses/<course_id>/info", methods=["POST"])
 def courses_info(course_id):
@@ -100,6 +78,25 @@ def courses_create():
 def courses_delete(course_id):
     t = Course.query.get(course_id)
     db.session.delete(t)
+    db.session().commit()
+  
+    return redirect(url_for("courses_index"))
+
+@app.route("/courses/<course_id>/", methods=["POST"])
+@login_required
+def enroll(course_id):
+    e = Enrolment(course_id, current_user.id)
+    db.session().add(e)
+    db.session().commit()
+  
+    return redirect(url_for("courses_index"))
+
+@app.route("/courses/<course_id>/remove", methods=["POST"])
+@login_required
+def remove_enrolment(course_id):
+    enrolmentId = Enrolment.get_enrolment_id(course_id, current_user.id)
+    q = Enrolment.query.get(enrolmentId)
+    db.session.delete(q)
     db.session().commit()
   
     return redirect(url_for("courses_index"))

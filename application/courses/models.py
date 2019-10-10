@@ -1,5 +1,6 @@
 from application import db
 from datetime import datetime, date
+from flask_login import login_required, current_user
 
 from sqlalchemy.sql import text
 
@@ -26,9 +27,6 @@ class Course(db.Model):
         self.description = description
         self.price = price
         self.enroll = False
-
-    def edit(self, name, location, startingDate, endingDate, description, price):
-        return 0
 
     def get_organiser_name(self):
         stmt = text("SELECT Account.name FROM Account JOIN Course ON Account.id"
@@ -58,3 +56,13 @@ class Course(db.Model):
         res = db.engine.execute(stmt)
         
         return res
+
+    def has_user_enrolled(self):
+        stmt = text("SELECT COUNT(*) FROM Enrolment "
+                    "WHERE account_id = :accountId "
+                    "AND course_id = :courseId").params(accountId=current_user.id, courseId=self.id)
+        res = db.engine.execute(stmt)
+        for row in res:
+            if (str(row[0]) == "1"):
+               return True
+        return False

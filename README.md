@@ -1,12 +1,17 @@
 # KurssiIlmo
 
-KurssiIlmo on nettiselaimen kautta toimiva sovellus, jolla käyttäjät voivat vaivattomasti luoda omia kursseja sekä ilmoittautua toisten käyttäjien järjestämille kursseille. Ohjelma on käytettävissä nettiselaimella [Herokussa](https://kurssiilmo.herokuapp.com/courses). Sovellusta pääsee kokeilemaan testitunnuksilla käyttäjänimellä *testi* ja salasanalla *kayttaja*.
+KurssiIlmo on nettiselaimen kautta toimiva sovellus, jolla käyttäjät voivat vaivattomasti luoda omia kursseja sekä ilmoittautua toisten käyttäjien järjestämille kursseille. Ohjelma on käytettävissä nettiselaimella [Herokussa](https://kurssiilmo.herokuapp.com/courses). Sovellusta pääsee kokeilemaan joko luomalla uuden käyttäjän tai kirjautumalla seuraavilla testitunnuksilla:
 
-Käyttäjän on ensin rekisteröidyttävä sivulle, jotta hän pääsee ilmoittautumaan kursseille. Tämän jälkeen hän pääsee selaamaan kurssivalikoimaa, näkemään kurssitietoja ja valitsemaan sieltä mieleisiä kursseja. Mikäli kurssi on maksullinen, voidaan käyttäjä saa "laskun" jossa näkyy maksun saajan tilinumero sekä hinta.
+Käyttäjänimi  | Salasana
+------------- | -------------
+testi  | kayttaja
 
-Kuka tahansa voi myös luoda omia kursseja. Se tapahtuu ohjelmassa erilaisella lomakkeella, johon syötetään kurssin tiedot, kuten nimi, paikka, aika sekä kurssin kuvaus ja hinta. Järjestäjä pystyy myös tarkastelemaan kursseillensa ilmoittautuneita henkilöitä.
 
-Käyttäjä voi myös tarkastella kursseja, joihin hän on ilmoittautunut. Hän voi myöskin poistaa omia ilmoittautumisiaan.
+Rekisteröitymisen/kirjautumisen jälkeen käyttäjä pääsee selaamaan kurssivalikoimaa, tarkastelemaan tarkemmin kurssitietoja sekä ilmoittautumaan itselleen mieluisille kursseille. Mikäli kurssi on maksullinen, käyttäjä saa "laskun" jossa näkyy maksun saajan tilinumero sekä hinta. Kun maksu on suoritettu, kurssin perustaja voi viimeistellä ilmoittautumisen.
+
+Kuka tahansa voi myös luoda omia kursseja. Se tapahtuu ohjelmassa erilaisella lomakkeella, johon syötetään kurssin tiedot, kuten nimi, paikka, aika sekä kurssin kuvaus ja hinta. Sovelluksen käyttäjät pystyvät myös näkemään kurssille ilmoittautuneet henkilöt.
+
+Käyttäjä voi myös tarkastella omia ilmoittautumisiaan. Hän voi myöskin poistaa omia ilmoittautumisiaan.
 
 
 ## Dokumentaatio
@@ -18,7 +23,7 @@ Käyttäjä voi myös tarkastella kursseja, joihin hän on ilmoittautunut. Hän 
 
 ## Ohjelman asennus omalle tietokoneelle
 
-Ensiksi sinun täytyy kloonata repositorio. Tämän jälkeen mene komentorivillä cd-komennolla repositorion sijaintiin.
+Mikäli haluat ajaa sovellusta omalla laitteellasi, täytyy ensiksi kloonata repositorio. Tämän jälkeen navigoi komentorivillä _cd_-komennolla repositorion sijaintiin.
 
 Seuraavaksi täytyy ajaa seuraavat komennot:
 
@@ -26,8 +31,17 @@ Seuraavaksi täytyy ajaa seuraavat komennot:
 
 ```pip install -r requirements.txt```
 
-Tämän jälkeen pääset ajamaan ohjelmaa komennolla
+Tämä komento asentaa tarvittavat ohjelman tarvitsemat riippuvuudet. Nyt pääset ajamaan ohjelmaa komennoilla
+
+```source venv/bin/activate```
 
 ```python run.py```
 
-Nyt pääset kokeilemaan ohjelmaa osoitteessa localhost:5000.
+Ohjelmaa voi kokeilla osoitteessa _localhost:5000_.
+
+## Puuttuvat/suunnitellut ominaisuudet:
+
+* Laskutus
+  * Kurssille ilmoittautumisen jälkeen käyttäjä voi tarkastella aukinaisia laskujansa. Kurssin pitäjä voi "viimeistellä" ilmoittautumisen kun maksu on toteutunut
+* Kurssilistauksen järjestäminen eri kriteereillä
+  

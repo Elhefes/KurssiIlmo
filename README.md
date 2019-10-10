@@ -19,25 +19,7 @@ Käyttäjä voi myös tarkastella omia ilmoittautumisiaan. Hän voi myöskin poi
 * [Käyttöohje](https://github.com/henripalin/KurssiIlmo/blob/master/dokumentaatio/k%C3%A4ytt%C3%B6ohje.md)
 * [Alustava tietokantakaavio](https://github.com/henripalin/KurssiIlmo/blob/master/dokumentaatio/tietokantakaavio.png)
 * [Käyttötapaukset](https://github.com/henripalin/KurssiIlmo/blob/master/dokumentaatio/k%C3%A4ytt%C3%B6tapaukset.md)
-* [Asennusohje](https://github.com/henripalin/KurssiIlmo/blob/master/dokumentaatio/k%C3%A4ytt%C3%B6tapaukset.md)
-
-## Ohjelman asennus omalle tietokoneelle
-
-Mikäli haluat ajaa sovellusta omalla laitteellasi, täytyy ensiksi kloonata repositorio. Tämän jälkeen navigoi komentorivillä _cd_-komennolla repositorion sijaintiin.
-
-Seuraavaksi täytyy ajaa seuraavat komennot:
-
-```python3 -m venv venv```
-
-```pip install -r requirements.txt```
-
-Tämä komento asentaa tarvittavat ohjelman tarvitsemat riippuvuudet. Nyt pääset ajamaan ohjelmaa komennoilla
-
-```source venv/bin/activate```
-
-```python run.py```
-
-Ohjelmaa voi kokeilla osoitteessa _localhost:5000_.
+* [Asennusohje](https://github.com/henripalin/KurssiIlmo/blob/master/dokumentaatio/asennusohje.md)
 
 ## Puuttuvat/suunnitellut ominaisuudet:
 

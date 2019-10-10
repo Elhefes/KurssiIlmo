@@ -53,9 +53,9 @@ class Course(db.Model):
                     "LEFT JOIN Enrolment ON Enrolment.account_id = Account.id "
                     "WHERE Enrolment.course_id = :id "
                     "GROUP BY Account.name").params(id=self.id)
-        res = db.engine.execute(stmt)
-        
-        return res
+        res = db.engine.execute(stmt).fetchall()
+        result = [r[0] for r in res]
+        return result
 
     def has_user_enrolled(self):
         stmt = text("SELECT COUNT(*) FROM Enrolment "

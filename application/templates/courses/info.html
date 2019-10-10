@@ -5,26 +5,27 @@
 <table>
     <tr>
       <ul>
-        <h1>{{ course.name }}</h1>
-        <h2>{{ course.get_organiser_name() }}</h2>
+        <h1>Kurssi: {{ course.name }}</h1>
         <b>
-          {{ course.startingDate.day }}.{{ course.startingDate.month }}.{{ course.startingDate.year }}
-          - {{ course.endingDate.day }}.{{ course.endingDate.month }}.{{ course.endingDate.year }}
-        </b>
+            {{ course.startingDate.day }}.{{ course.startingDate.month }}.{{ course.startingDate.year }}
+            - {{ course.endingDate.day }}.{{ course.endingDate.month }}.{{ course.endingDate.year }}
+        </b><br><br>
+        <b>Järjestäjä: {{ course.get_organiser_name() }}</b><br>
       </ul>
       <ul>
-          Sijainti: {{ course.location }}
+          <b>Sijainti:</b> {{ course.location }}
       </ul>
         <ul>
-            <h2>Kuvaus</h2> {{course.description}}
+            <b>Kuvaus</b><br>
+            {{course.description}}
           </ul>
           <ul>
-              Hinta {{course.price}}€<br>
-              <h2>OSALLISTUJAT</h2>
-              {% for row in course.get_enrollees() %}
-              <td>{{ row }}</td>
+              <b>Hinta:</b> {{course.price}}€<br><br>
+              <b>Osallistujat:</b><br>
+              {% for e in course.get_enrollees() %}
+              -{{ e }}<br>
               {% endfor %}
-          </ul>
+            </ul>
     </tr>
     <tr>
     </tr>

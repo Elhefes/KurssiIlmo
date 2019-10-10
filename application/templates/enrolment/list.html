@@ -19,7 +19,7 @@
         <form method="POST" action="{{ url_for('enrolments_index') }}">
           <input type="submit" value="Kurssitiedot"/>
         </form>
-        <form method="POST" action="{{ url_for('remove_enrolment', course_id = enrolment.course_id) }}">
+        <form method="POST" action="{{ url_for('enrolments_remove', course_id = enrolment.course_id) }}">
           <input type="submit" value="Poista"/>
         </form>
       </td>

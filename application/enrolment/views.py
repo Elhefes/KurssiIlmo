@@ -7,3 +7,13 @@ from application import app, db
 @app.route("/enrolments", methods=["GET"])
 def enrolments_index():
     return render_template("enrolment/list.html", enrolments = Enrolment.query.all())
+
+@app.route("/enrolments/<course_id>/remove", methods=["POST"])
+@login_required
+def enrolments_remove(course_id):
+    enrolmentId = Enrolment.get_enrolment_id(course_id, current_user.id)
+    q = Enrolment.query.get(enrolmentId)
+    db.session.delete(q)
+    db.session().commit()
+  
+    return redirect(url_for("enrolments_index"))

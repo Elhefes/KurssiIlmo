@@ -26,4 +26,4 @@ Käyttäjä voi myös tarkastella omia ilmoittautumisiaan. Hän voi myöskin poi
 * Laskutus
   * Kurssille ilmoittautumisen jälkeen käyttäjä voi tarkastella aukinaisia laskujansa. Kurssin pitäjä voi "viimeistellä" ilmoittautumisen kun maksu on toteutunut
 * Kurssilistauksen järjestäminen eri kriteereillä
-  
+* Omat ilmoittautumiset-sivun viimeistely

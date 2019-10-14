@@ -8,13 +8,13 @@ Seuraavaksi täytyy ajaa seuraavat komennot:
 
 ```pip install -r requirements.txt```
 
-Tämä komento asentaa tarvittavat ohjelman tarvitsemat riippuvuudet. Nyt pääset ajamaan ohjelmaa komennoilla
-
 ```source venv/bin/activate```
+
+Tämä komento asentaa tarvittavat ohjelman tarvitsemat riippuvuudet. Nyt pääset ajamaan ohjelmaa komennoilla
 
 ```python run.py```
 
-Ohjelmaa voi kokeilla osoitteessa _localhost:5000_.
+Tämän jälkeen ohjelmaa pääsee kokeilemaan osoitteessa _localhost:5000_.
 
 ## Ohjelman siirtäminen Herokuun
 

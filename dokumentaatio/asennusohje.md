@@ -10,7 +10,7 @@ Seuraavaksi täytyy ajaa seuraavat komennot:
 
 ```source venv/bin/activate```
 
-Tämä komento asentaa tarvittavat ohjelman tarvitsemat riippuvuudet. Nyt pääset ajamaan ohjelmaa komennoilla
+Nyt pääset ajamaan ohjelmaa komennoilla
 
 ```python run.py```
 

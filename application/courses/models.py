@@ -48,6 +48,14 @@ class Course(db.Model):
         for row in res:
             return row[0]
 
+    def get_enrollees_amount(self):
+        stmt = text("SELECT COUNT(*) FROM Account "
+                    "LEFT JOIN Enrolment ON Enrolment.account_id = Account.id "
+                    "WHERE Enrolment.course_id = :id").params(id=self.id)
+        res = db.engine.execute(stmt)
+        for row in res:
+            return row[0]
+
     def get_enrollees(self):
         stmt = text("SELECT Account.name FROM Account "
                     "LEFT JOIN Enrolment ON Enrolment.account_id = Account.id "

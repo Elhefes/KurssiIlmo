@@ -6,6 +6,7 @@ from application.courses.views import Course
 from application import app, db
 
 @app.route("/enrolments", methods=["GET"])
+@login_required
 def enrolments_index():
     return render_template("enrolment/list.html", enrolments = Enrolment.query.all())
 

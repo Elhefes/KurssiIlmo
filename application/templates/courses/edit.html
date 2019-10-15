@@ -55,9 +55,17 @@
         </ul>
     </tr>
     <tr>
+      </table>
 <td colspan="2">
   <input type="submit" value="Tallenna muutokset"/>
 </td>
     </tr>
+</form><br>
+<form method="POST" action="{{ url_for('courses_delete', course_id=course.id) }}"
+    onsubmit="return confirm('Haluatko varmasti poistaa kurssin? ' +
+    'Kurssin poistaminen poistaa kaikki sen kurssin ilmoittautumiset.');"
+>
+    <input type="submit" value="Poista kurssi"/>
 </form>
+<br>
 {% endblock %}

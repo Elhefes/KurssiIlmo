@@ -16,15 +16,19 @@
           <b>Sijainti:</b> {{ course.location }}
       </ul>
         <ul>
-            <b>Kuvaus</b><br>
+            <b>Kuvaus:</b><br>
             {{course.description}}
           </ul>
           <ul>
             <b>Hinta:</b> {{course.price}}€<br><br>
             <b>Osallistujat:</b><br>
-            {% for e in course.get_enrollees() %}
-            -{{ e }}<br>
-            {% endfor %}
+            {% if course.get_enrollees_amount() == 0%}
+              Kurssilla ei ole vielä osallistujia.
+              {% else %}
+                {% for e in course.get_enrollees() %}
+                -{{ e }}<br>
+                {% endfor %}
+            {%endif%}
           </ul>
     </tr>
     <tr>

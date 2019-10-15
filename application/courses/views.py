@@ -14,9 +14,10 @@ from application.enrolment.forms import EnrolmentForm
 def courses_form():
     return render_template("courses/new.html", form = CourseForm())
 
-@app.route("/courses/<course_id>/edit")
+@app.route("/courses/<course_id>/edit", methods=["POST"])
 @login_required
 def courses_edit_form(course_id):
+    print("MUOKATAAN KURSSIA!!!")
     c = Course.query.get(course_id)
     return render_template("courses/edit.html", form = CourseForm(), course = c, courseStart = 
         (str(c.startingDate.year)+"-"+str(c.startingDate.month)+"-"+str(c.startingDate.day)), courseEnd =
@@ -31,7 +32,7 @@ def courses_info(course_id):
     course = Course.query.get(course_id)  
     return render_template("courses/info.html", course = course)
 
-@app.route("/courses/<course_id>/edit", methods=["POST"])
+@app.route("/courses/<course_id>/modify", methods=["POST"])
 @login_required
 def courses_modify(course_id):
     c = Course.query.get(course_id)

@@ -25,10 +25,13 @@
     </tr>
     <tr>
       <td colspan="2">
-	<input type="submit" value="Kirjaudu"/>
+        <button type= "submit">Kirjaudu</button>
       </td>
     </tr>
+  </table>
     
 </form>
-
+<form method="GET" action="{{ url_for('auth_register')}}">
+    <button type= "submit">Rekisteröidy</button>
+</form>
 {% endblock %}

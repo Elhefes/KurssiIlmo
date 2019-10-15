@@ -15,6 +15,9 @@
         <form method="POST" action="{{ url_for('enrolments_remove', course_id = enrolment.course_id) }}">
           <input type="submit" value="Poista"/>
         </form>
+        <form method="POST" action="{{ url_for('enrolments_remove', course_id = enrolment.course_id) }}">
+            <input type="submit" value="Lasku"/>
+          </form>
       </td>
       </td>
       {% endif %}

@@ -53,6 +53,14 @@
           <li>{{ error }}</li>
           {%endfor%}
         </ul>
+      </ul>
+      {{ form.organizerIban.label }} <br>
+      {{ form.organizerIban(value=course.organizerIban) }}
+      <ul>
+        {% for error in form.organizerIban.errors %}
+        <li>{{ error }}</li>
+        {%endfor%}
+      </ul>
     </tr>
     <tr>
       </table>
@@ -63,8 +71,7 @@
 </form><br>
 <form method="POST" action="{{ url_for('courses_delete', course_id=course.id) }}"
     onsubmit="return confirm('Haluatko varmasti poistaa kurssin? ' +
-    'Kurssin poistaminen poistaa kaikki sen kurssin ilmoittautumiset.');"
->
+    'Kurssin poistaminen poistaa kaikki sen kurssin ilmoittautumiset.');">
     <input type="submit" value="Poista kurssi"/>
 </form>
 <br>

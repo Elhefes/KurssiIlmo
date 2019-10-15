@@ -17,7 +17,6 @@ def courses_form():
 @app.route("/courses/<course_id>/edit", methods=["POST"])
 @login_required
 def courses_edit_form(course_id):
-    print("MUOKATAAN KURSSIA!!!")
     c = Course.query.get(course_id)
     return render_template("courses/edit.html", form = CourseForm(), course = c, courseStart = 
         (str(c.startingDate.year)+"-"+str(c.startingDate.month)+"-"+str(c.startingDate.day)), courseEnd =
@@ -65,8 +64,11 @@ def courses_create():
 
     t = Course(form.name.data, form.location.data,
     form.startingDate.data, form.endingDate.data, 
-    form.description.data, form.price.data)
-    
+    form.description.data, form.price.data, form.organizerIban.data)
+
+    if current_user.iban == "":
+        current_user.iban = form.organizerIban.data
+
     t.account_id = current_user.id
 
     db.session().add(t)
@@ -77,6 +79,10 @@ def courses_create():
 @app.route("/courses/<course_id>/delete/", methods=["POST"])
 @login_required
 def courses_delete(course_id):
+    e = Enrolment.query.filter_by(course_id = course_id)
+    for i in e:
+        db.session().delete(i)
+
     t = Course.query.get(course_id)
     db.session.delete(t)
     db.session().commit()

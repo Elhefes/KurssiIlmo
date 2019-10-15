@@ -13,19 +13,19 @@ class Course(db.Model):
     endingDate = db.Column(db.Date)
     description = db.Column(db.String(144), nullable=False)
     price = db.Column(db.Float)
-
-    enroll = db.Column(db.Boolean, nullable=False)
+    organizerIban = db.Column(db.String(144), nullable=False)
 
     account_id = db.Column(db.Integer, db.ForeignKey('account.id'),
                            nullable=False)
 
-    def __init__(self, name, location, startingDate, endingDate, description, price):
+    def __init__(self, name, location, startingDate, endingDate, description, price, organizerIban):
         self.name = name
         self.location = location
         self.startingDate = startingDate
         self.endingDate = endingDate
         self.description = description
         self.price = price
+        self.organizerIban = organizerIban
         self.enroll = False
 
     def get_organiser_name(self):

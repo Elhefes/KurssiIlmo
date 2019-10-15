@@ -13,6 +13,7 @@ class User(db.Model):
     name = db.Column(db.String(144), nullable=False)
     username = db.Column(db.String(144), nullable=False)
     password = db.Column(db.String(144), nullable=False)
+    iban = db.Column(db.String(144), nullable = False)
 
     courses = db.relationship("Course", backref='account', lazy=True)
 
@@ -20,6 +21,7 @@ class User(db.Model):
         self.name = name
         self.username = username
         self.password = password
+        self.iban = ""
   
     def get_id(self):
         return self.id
@@ -38,6 +40,3 @@ class User(db.Model):
         res = db.engine.execute(stmt)
         for row in res:
             return row[0]
-
-    def roles(self):
-        return ["ADMIN"]

@@ -51,6 +51,14 @@
           <li>{{ error }}</li>
           {%endfor%}
         </ul>
+      </ul>
+      {{ form.organizerIban.label }} <br>
+      {{ form.organizerIban }}
+      <ul>
+        {% for error in form.organizerIban.errors %}
+        <li>{{ error }}</li>
+        {%endfor%}
+      </ul>
     </tr>
     <tr>
 <td colspan="2">

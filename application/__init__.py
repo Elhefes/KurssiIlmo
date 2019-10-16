@@ -39,6 +39,7 @@ from application.enrolment import models
 from application.enrolment import views
 
 from application.invoice import models
+from application.invoice import views
 
 @login_manager.user_loader
 def load_user(user_id):

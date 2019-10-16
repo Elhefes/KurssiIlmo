@@ -53,7 +53,7 @@
         </ul>
       </ul>
       {{ form.organizerIban.label }} <br>
-      {{ form.organizerIban }}
+      {{ form.organizerIban(value=current_user.iban) }}
       <ul>
         {% for error in form.organizerIban.errors %}
         <li>{{ error }}</li>

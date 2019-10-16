@@ -6,16 +6,16 @@ class Invoice(db.Model):
     __tablename__ = "invoice"
   
     id = db.Column(db.Integer, primary_key=True)
-    organizerIban = db.Column(db.String(144),
-                           nullable=False)
     enrolment_id = db.Column(db.Integer, db.ForeignKey('enrolment.id'),
                            nullable=False)
-    paid = db.Column(db.Boolean, nullable=False)
     price = db.Column(db.Float)
+    paid = db.Column(db.Boolean, nullable=False)
 
-    def __init__(self, course_id, account_id):
-        return
-  
+    def __init__(self, enrolment_id, price):
+        self.enrolment_id = enrolment_id
+        self.price = price
+        self.paid = False
+
     def get_id(self):
         return self.id
 

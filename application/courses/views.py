@@ -7,7 +7,7 @@ from application.courses.models import Course
 from application.courses.forms import CourseForm
 
 from application.enrolment.models import Enrolment
-from application.enrolment.forms import EnrolmentForm
+from application.invoice.models import Invoice
 
 @app.route("/courses/new/")
 @login_required
@@ -94,8 +94,14 @@ def courses_delete(course_id):
 def enroll(course_id):
     e = Enrolment(course_id, current_user.id)
     db.session().add(e)
+
+    c = Course.query.get(course_id)
+    if c.price > 0:
+        i = Invoice(e.id, c.price)
+        db.session().add(i)
+
     db.session().commit()
-  
+    
     return redirect(url_for("courses_index"))
 
 @app.route("/courses/<course_id>/remove", methods=["POST"])

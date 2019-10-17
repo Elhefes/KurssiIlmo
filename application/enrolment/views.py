@@ -15,8 +15,12 @@ def enrolments_index():
 @login_required
 def enrolments_remove(course_id):
     enrolmentId = Enrolment.get_enrolment_id(course_id, current_user.id)
-    q = Enrolment.query.get(enrolmentId)
-    db.session.delete(q)
+    invoice = Invoice.query.filter_by(enrolment_id = enrolmentId).first()
+    db.session.delete(invoice)
+    db.session().commit()
+
+    e = Enrolment.query.get(enrolmentId)
+    db.session.delete(e)
     db.session().commit()
   
     return redirect(url_for("enrolments_index"))

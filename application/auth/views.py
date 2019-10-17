@@ -6,6 +6,7 @@ from application import app, db
 from application.auth.models import User
 from application.courses.models import Course
 from application.enrolment.models import Enrolment
+from application.invoice.models import Invoice
 from application.auth.forms import LoginForm, RegisterForm, EditForm
 
 @app.route("/auth/login", methods = ["GET", "POST"])
@@ -76,13 +77,18 @@ def auth_logout():
 @login_required
 def account_delete():
     e = Enrolment.query.filter_by(account_id = current_user.id)
-    for i in e:
-        db.session().delete(i)
+    for enrolment in e:
+        ownInvoice = Invoice.query.filter_by(enrolment_id = enrolment.id).first()
+        db.session().delete(ownInvoice)
+        db.session().delete(enrolment)
 
     c = Course.query.filter_by(account_id = current_user.id)
     for course in c:
         e = Enrolment.query.filter_by(course_id = course.id)
         for enrolment in e:
+            ownInvoice = Invoice.query.filter_by(enrolment_id = enrolment.id).first()
+            i = Invoice.query.get(ownInvoice)
+            db.session.delete(i)
             db.session().delete(enrolment)
         db.session().delete(course)
 

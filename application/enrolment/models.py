@@ -7,9 +7,6 @@ class Enrolment(db.Model):
   
     id = db.Column(db.Integer, primary_key=True)
     date_created = db.Column(db.Date, default=db.func.current_timestamp())
-    date_modified = db.Column(db.DateTime, default=db.func.current_timestamp(),
-                              onupdate=db.func.current_timestamp())
-
     course_id = db.Column(db.Integer, db.ForeignKey('course.id'),
                            nullable=False)
 
@@ -40,6 +37,12 @@ class Enrolment(db.Model):
 
     def get_enrolment_amount():
         stmt = text("SELECT COUNT(*) FROM Enrolment")
+        res = db.engine.execute(stmt)
+        for row in res:
+            return row[0]
+
+    def enrolment_getCourse(self):
+        stmt = text("SELECT name FROM Course WHERE id =:course_id ").params(course_id=self.course_id)
         res = db.engine.execute(stmt)
         for row in res:
             return row[0]

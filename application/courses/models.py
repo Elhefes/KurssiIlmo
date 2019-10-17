@@ -6,7 +6,6 @@ from sqlalchemy.sql import text
 
 class Course(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-
     name = db.Column(db.String(144), nullable=False)
     location = db.Column(db.String(144), nullable=False)
     startingDate = db.Column(db.Date)
@@ -14,7 +13,6 @@ class Course(db.Model):
     description = db.Column(db.String(144), nullable=False)
     price = db.Column(db.Float)
     organizerIban = db.Column(db.String(144), nullable=False)
-
     account_id = db.Column(db.Integer, db.ForeignKey('account.id'),
                            nullable=False)
 
@@ -74,3 +72,11 @@ class Course(db.Model):
             if (str(row[0]) == "1"):
                return True
         return False
+
+    def courses_by_price_min():
+        stmt = text("SELECT * FROM Course ORDER BY course.price")
+        res = db.engine.execute(stmt)
+        result = []
+        for row in res:
+            result.append(row)
+            

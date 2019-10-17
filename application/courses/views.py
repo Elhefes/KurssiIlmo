@@ -24,7 +24,7 @@ def courses_edit_form(course_id):
 
 @app.route("/courses", methods=["GET"])
 def courses_index():
-    return render_template("courses/list.html", courses = Course.query.all(), enrolments = Enrolment.query.all())
+    return render_template("courses/list.html", courses = Course.query.all(), enrolments = Enrolment.query.all(), invoice = Invoice.query.all())
 
 @app.route("/courses/<course_id>/info", methods=["POST"])
 def courses_info(course_id):
@@ -79,6 +79,10 @@ def courses_create():
 @app.route("/courses/<course_id>/delete/", methods=["POST"])
 @login_required
 def courses_delete(course_id):
+    invoice = Invoice.query.filter_by(enrolment_id = Enrolment.query.filter_by(course_id = course_id).first().id)
+    for i in invoice:
+        db.session.delete(i)
+
     e = Enrolment.query.filter_by(course_id = course_id)
     for i in e:
         db.session().delete(i)
@@ -96,9 +100,10 @@ def enroll(course_id):
     db.session().add(e)
 
     c = Course.query.get(course_id)
-    if c.price > 0:
-        i = Invoice(e.id, c.price)
-        db.session().add(i)
+    i = Invoice(e.id, c.price)
+    if c.price == 0:
+        i.paid = True
+    db.session().add(i)
 
     db.session().commit()
     
@@ -112,4 +117,8 @@ def remove_enrolment(course_id):
     db.session.delete(q)
     db.session().commit()
   
+    invoice = Invoice.query.filter_by(enrolment_id = enrolmentId).first()
+    db.session.delete(invoice)
+    db.session().commit()
+
     return redirect(url_for("courses_index"))

@@ -3,28 +3,29 @@
 {% block body %}
 <table class="table table-light">
   <h1>Ilmoittautumisesi</h1>
-    <tr>
-      <th>Ilmoittautumisnumero</th>
-      <th>Kurssi</th>
-      <th>Ilmoittautumispäivä</th>
-    </tr>
-    {% for enrolment in enrolments %}
-    {% if current_user.id == enrolment.account_id %}
-    <tr>
-      <td>{{ enrolment.id }}</td>
-      <td>{{ enrolment.enrolment_getCourse() }}</td>
-      <td>{{ enrolment.date_created.day }}.{{ enrolment.date_created.month }}.{{ enrolment.date_created.year }}</td>
-      <td>
-        <form method="POST" action="{{ url_for('invoice_index', course_id = enrolment.course_id, enrolment_id = enrolment.id) }}">
-          <input type="submit" value="Lasku"/>
-        </form>
-        <form method="POST" action="{{ url_for('enrolments_remove', course_id = enrolment.course_id) }}">
-          <input type="submit" value="Poista"/>
-        </form>
-      </td>
-      </td>
-      {% endif %}
-    </tr>
-    {% endfor %}
-  </table>
+  <tr>
+    <th>Ilmoittautumisnumero</th>
+    <th>Kurssi</th>
+    <th>Ilmoittautumispäivä</th>
+  </tr>
+  {% for enrolment in enrolments %}
+  {% if current_user.id == enrolment.account_id %}
+  <tr>
+    <td>{{ enrolment.id }}</td>
+    <td>{{ enrolment.enrolment_getCourse() }}</td>
+    <td>{{ enrolment.date_created.day }}.{{ enrolment.date_created.month }}.{{ enrolment.date_created.year }}</td>
+    <td>
+      <form method="POST"
+        action="{{ url_for('invoice_index', course_id = enrolment.course_id, enrolment_id = enrolment.id) }}">
+        <input type="submit" value="Lasku" />
+      </form>
+      <form method="POST" action="{{ url_for('enrolments_remove', course_id = enrolment.course_id) }}">
+        <input type="submit" value="Poista" />
+      </form>
+    </td>
+    </td>
+    {% endif %}
+  </tr>
+  {% endfor %}
+</table>
 {% endblock %}

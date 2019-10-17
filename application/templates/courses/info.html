@@ -1,38 +1,73 @@
-
 {% extends "layout.html" %}
 
 {% block body %}
 <table>
-    <tr>
-      <ul>
-        <h1>Kurssi: {{ course.name }}</h1>
-        <b>
-            {{ course.startingDate.day }}.{{ course.startingDate.month }}.{{ course.startingDate.year }}
-            - {{ course.endingDate.day }}.{{ course.endingDate.month }}.{{ course.endingDate.year }}
-        </b><br><br>
-        <b>Järjestäjä: {{ course.get_organiser_name() }}</b><br>
-      </ul>
-      <ul>
-          <b>Sijainti:</b> {{ course.location }}
-      </ul>
-        <ul>
-            <b>Kuvaus:</b><br>
-            {{course.description}}
-          </ul>
-          <ul>
-            <b>Hinta:</b> {{course.price}}€<br><br>
-            <b>Osallistujat:</b><br>
-            {% if course.get_enrollees_amount() == 0%}
-              Kurssilla ei ole vielä osallistujia.
-              {% else %}
-                {% for e in course.get_enrollees() %}
-                -{{ e }}<br>
-                {% endfor %}
-            {%endif%}
-          </ul>
-    </tr>
-    <tr>
-    </tr>
+  <tr>
+    <ul>
+      <h2>Kurssi: {{ course.name }}</h2>
+      <b>
+        {{ course.startingDate.day }}.{{ course.startingDate.month }}.{{ course.startingDate.year }}
+        - {{ course.endingDate.day }}.{{ course.endingDate.month }}.{{ course.endingDate.year }}
+      </b><br><br>
+      <b>Järjestäjä: {{ course.get_organiser_name() }}</b><br>
+    </ul>
+    <ul>
+      <b>Sijainti:</b> {{ course.location }}
+    </ul>
+    <ul>
+      <b>Kuvaus:</b><br>
+      {{course.description}}
+    </ul>
+    <ul>
+      <b>Hinta:</b> {{ course.price }}€<br><br>
+
+      {% if current_user.is_authenticated %}
+      {% if course.has_user_enrolled() == false %}
+      <form method="POST" action="{{ url_for('enroll', course_id=course.id) }}">
+        <input type="submit" value="Ilmoittaudu" />
+      </form>
+      {% elif course.has_user_enrolled() == true %}
+      <form method="POST" action="{{ url_for('remove_enrolment', course_id=course.id) }}">
+        <input type="submit" value="Poista ilmoittautuminen" />
+      </form>
+      {% endif %}
+      {% endif %}
+      <br><br>
+      {% if course.get_enrollees_amount() == 0%}
+      Kurssilla ei ole vielä osallistujia.
+      {% else %}
+      <table class="table table-light">
+        <tr>
+          <th><b>Osallistujat</b><br></th>
+          {% if current_user.id == course.account_id %}
+          <th><b>Maksanut</b><br></th>
+          {% endif %}
+        </tr>
+        {% for e in enrolments %}
+        {% if e.course_id == course.id %}
+        <tr>
+          <td>
+            {{ e.get_enrollee_name() }}
+          </td>
+          {% endif %}
+          {% if current_user.id == course.account_id %}
+          <td>
+            {% if e.course_id == course.id %}
+            {% if e.is_invoice_paid() == True %}
+            Kyllä
+            {% else %}
+            Ei
+            {% endif %}
+            {% endif %}
+          </td>
+          {% endif %}
+          {% endfor %}
+        </tr>
+      </table>
+      {%endif%}
+    </ul>
+  </tr>
 </table>
 </form>
+
 {% endblock %}

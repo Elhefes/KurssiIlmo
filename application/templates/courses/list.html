@@ -2,45 +2,49 @@
 
 {% block body %}
 <table class="table table-light">
-    <tr>
-      <th>Kurssi</th>
-      <th>Järjestäjä</th>
-      <th>Paikka</th>
-      <th>Hinta</th>
-      <th>Aika</th>
-      <th>Osallistujia</th>
-    </tr>
-    {% for course in courses %}
-    <tr>
-      <td>{{ course.name }}</td>
-      <td>{{ course.get_organiser_name() }}</td>
-      <td>{{ course.location }}</td>
-      <td>{{ course.price }}€</td>
-      <td width= "200">{{ course.startingDate.day }}.{{ course.startingDate.month }}.{{ course.startingDate.year }}
-          - {{ course.endingDate.day }}.{{ course.endingDate.month }}.{{ course.endingDate.year }}</td>
-      <td>{{ course.get_enrollees_amount() }}</td>
-      <td>
-        <form method="POST" action="{{ url_for('courses_info', course_id=course.id) }}">
-            <input type="submit" value="Lisätietoja"/>
-        </form>
-        {% if current_user.is_authenticated %}
-          {% if course.has_user_enrolled() == false %}
-            <form method="POST" action="{{ url_for('enroll', course_id=course.id) }}">
-              <input type="submit" value="Ilmoittaudu"/>
-            </form>
-          {% elif course.has_user_enrolled() == true %}
-            <form method="POST" action="{{ url_for('remove_enrolment', course_id=course.id) }}">
-              <input type="submit" value="Poista ilmoittautuminen"/>
-            </form>
-          {% endif %}
-        {% endif %}
-        {% if course.get_organiser_id() == current_user.id %}
-        <form method="POST" action="{{ url_for('courses_edit_form', course_id=course.id) }}">
-            <input type="submit" value="Muokkaa"/>
-        </form>
-        {% endif %}
-      </td>
-    </tr>
-    {% endfor %}
-  </table>
+  <tr>
+    <th>Kurssi</th>
+    <th>Järjestäjä</th>
+    <th>Paikka</th>
+    <th>Hinta</th>
+    <th>Aika</th>
+    <th>Osallistujia</th>
+  </tr>
+  {% for course in courses %}
+  <tr>
+    <td>{{ course.name }}</td>
+    <td>{{ course.get_organiser_name() }}</td>
+    <td>{{ course.location }}</td>
+    <td>{{ course.price }}€</td>
+    <td width="200">{{ course.startingDate.day }}.{{ course.startingDate.month }}.{{ course.startingDate.year }}
+      - {{ course.endingDate.day }}.{{ course.endingDate.month }}.{{ course.endingDate.year }}</td>
+    <td>{{ course.get_enrollees_amount() }}</td>
+    <td>
+      <form method="POST" action="{{ url_for('courses_info', course_id=course.id) }}">
+        <input type="submit" value="Lisätietoja" />
+      </form>
+    </td>
+    <td>
+      {% if current_user.is_authenticated %}
+      {% if course.has_user_enrolled() == false %}
+      <form method="POST" action="{{ url_for('enroll', course_id=course.id) }}">
+        <input type="submit" value="Ilmoittaudu" />
+      </form>
+      {% elif course.has_user_enrolled() == true %}
+      <form method="POST" action="{{ url_for('remove_enrolment', course_id=course.id) }}">
+        <input type="submit" value="Poista ilmoittautuminen" />
+      </form>
+      {% endif %}
+      {% endif %}
+    </td>
+    <td>
+      {% if course.get_organiser_id() == current_user.id %}
+      <form method="POST" action="{{ url_for('courses_edit_form', course_id=course.id) }}">
+        <input type="submit" value="Muokkaa" />
+      </form>
+      {% endif %}
+    </td>
+  </tr>
+  {% endfor %}
+</table>
 {% endblock %}

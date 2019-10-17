@@ -1,22 +1,21 @@
-
 {% extends "layout.html" %}
 
 {% block body %}
 <p>
-<h2>Lasku</h2>
+  <h2>Lasku</h2>
   Kuvaus: {{ course.name }}<br>
   Maksun saajan nimi: {{ course.get_organiser_name() }}<br>
   IBAN: {{ course.organizerIban }}<br>
   Maksajan tunniste: {{ current_user.name }}<br><br>
   <b>LASKU YHTEENSÄ: {{ course.price }} euroa</b><br><br>
   {% if invoice.paid == False %}
-    <form method="POST" action="{{ url_for('invoice_pay', invoice_id = invoice.id)}}">
-        <input type="submit" value="Maksa lasku"/>
-    </form>
+  <form method="POST" action="{{ url_for('invoice_pay', invoice_id = invoice.id)}}">
+    <input type="submit" value="Maksa lasku" />
+  </form>
   {% elif course.price == 0 %}
-    Kurssi on ilmainen, maksua ei tarvita!
+  Kurssi on ilmainen, maksua ei tarvita!
   {% else %}
-    Maksettu!
+  Maksettu!
   {% endif %}
 </p>
 {% endblock %}

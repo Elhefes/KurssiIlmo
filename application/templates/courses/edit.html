@@ -4,55 +4,47 @@
 <form method="POST" action="{{ url_for('courses_modify', course_id = course.id) }}">
   <table>
     <tr>
-        <h1>Muokkaa kurssin {{ course.name }} tietoja</h1>
-        {{ form.name.label }} <br>
-        {{ form.name(value=course.name) }} <br>
-        <ul>
-          {% for error in form.name.errors %}
-          <li>{{ error }}</li>
-          {%endfor%}
-        </ul>
-        {{ form.location.label }} <br>
-        {{ form.location(value=course.location) }} <br> 
-        <ul>
-          {% for error in form.location.errors %}
-          <li>{{ error }}</li>
-          {%endfor%}
-        </ul>
-        <div class = "form-field-item">
-            <p>Alkaa</p>
-            <input 
-              name="startingDate"
-              type="date"
-              value="{{courseStart}}"
-            >
-          </div><br>
-          <div class = "form-field-item">
-            <p>Loppuu</p>
-            <input 
-              name="endingDate"
-              type="date"
-              value="{{courseEnd}}"
-            >     
-          </div><br>
-          {% for error in form.startingDate.errors %}
-          <li>{{ error }}</li>
-          {%endfor%}
-        </ul>
-        <label for="description">Kuvaus</label> <br>
-          <textarea cols="50" id="description" name="description" rows="10">{{course.description}}</textarea> <br>
-        <ul>
-          {% for error in form.description.errors %}
-          <li>{{ error }}</li>
-          {%endfor%}
-        </ul>
-        {{ form.price.label }} <br>
-        {{ form.price(value=course.price) }}€ <br><br>
-        <ul>
-          {% for error in form.price.errors %}
-          <li>{{ error }}</li>
-          {%endfor%}
-        </ul>
+      <h1>Muokkaa kurssin {{ course.name }} tietoja</h1>
+      {{ form.name.label }} <br>
+      {{ form.name(value=course.name) }} <br>
+      <ul>
+        {% for error in form.name.errors %}
+        <li>{{ error }}</li>
+        {%endfor%}
+      </ul>
+      {{ form.location.label }} <br>
+      {{ form.location(value=course.location) }} <br>
+      <ul>
+        {% for error in form.location.errors %}
+        <li>{{ error }}</li>
+        {%endfor%}
+      </ul>
+      <div class="form-field-item">
+        <p>Alkaa</p>
+        <input name="startingDate" type="date" value="{{courseStart}}">
+      </div><br>
+      <div class="form-field-item">
+        <p>Loppuu</p>
+        <input name="endingDate" type="date" value="{{courseEnd}}">
+      </div><br>
+      {% for error in form.startingDate.errors %}
+      <li>{{ error }}</li>
+      {%endfor%}
+      </ul>
+      <label for="description">Kuvaus</label> <br>
+      <textarea cols="50" id="description" name="description" rows="10">{{course.description}}</textarea> <br>
+      <ul>
+        {% for error in form.description.errors %}
+        <li>{{ error }}</li>
+        {%endfor%}
+      </ul>
+      {{ form.price.label }} <br>
+      {{ form.price(value=course.price) }}€ <br><br>
+      <ul>
+        {% for error in form.price.errors %}
+        <li>{{ error }}</li>
+        {%endfor%}
+      </ul>
       </ul>
       {{ form.organizerIban.label }} <br>
       {{ form.organizerIban(value=course.organizerIban) }}
@@ -63,16 +55,15 @@
       </ul>
     </tr>
     <tr>
-      </table>
-<td colspan="2">
-  <input type="submit" value="Tallenna muutokset"/>
-</td>
-    </tr>
+  </table>
+  <td colspan="2">
+    <input type="submit" value="Tallenna muutokset" />
+  </td>
+  </tr>
 </form><br>
-<form method="POST" action="{{ url_for('courses_delete', course_id=course.id) }}"
-    onsubmit="return confirm('Haluatko varmasti poistaa kurssin? ' +
+<form method="POST" action="{{ url_for('courses_delete', course_id=course.id) }}" onsubmit="return confirm('Haluatko varmasti poistaa kurssin? ' +
     'Kurssin poistaminen poistaa kaikki sen kurssin ilmoittautumiset.');">
-    <input type="submit" value="Poista kurssi"/>
+  <input type="submit" value="Poista kurssi" />
 </form>
 <br>
 {% endblock %}

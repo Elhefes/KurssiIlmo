@@ -1,11 +1,11 @@
 {% extends "layout.html" %}
 
 {% block body %}
-  <p>
-    <h1>KurssiIlmo</h1>
-    <h5>Yksinkertainen palvelu kurssien järjestämiseen ja niille ilmoittautumiseen</h5>
-    Käyttäjiä sovelluksella on {{ user.get_user_amount() }}, jotka ovat
-    perustaneet yhteensä {{ course.get_course_amount() }} kurssia. <br>
-    Kurssi-ilmoittautumisia on yhteensä {{enrolment.get_enrolment_amount()}} kappaletta.
-  </p>
+<p>
+  <h1>KurssiIlmo</h1>
+  <h5>Yksinkertainen palvelu kurssien järjestämiseen ja niille ilmoittautumiseen</h5>
+  Käyttäjiä sovelluksella on {{ user.get_user_amount() }}, jotka ovat
+  perustaneet yhteensä {{ course.get_course_amount() }} kurssia. <br>
+  Kurssi-ilmoittautumisia on yhteensä {{enrolment.get_enrolment_amount()}} kappaletta.
+</p>
 {% endblock %}

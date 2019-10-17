@@ -29,7 +29,7 @@ def courses_index():
 @app.route("/courses/<course_id>/info", methods=["POST"])
 def courses_info(course_id):
     course = Course.query.get(course_id)  
-    return render_template("courses/info.html", course = course)
+    return render_template("courses/info.html", course = course, enrolments = Enrolment.query.all())
 
 @app.route("/courses/<course_id>/modify", methods=["POST"])
 @login_required

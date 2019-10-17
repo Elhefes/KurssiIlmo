@@ -36,29 +36,29 @@
                   <td>
                         {{ form.password.label }}
                   </td>
-                        <td>
-                              {{ form.password(value=current_user.password) }}
-                              <ul>
-                                    {% for error in form.password.errors %}
-                                    <li>{{ error }}</li>
-                                    {%endfor%}
-                              </ul>
-                        </td>
-                  </tr>
+                  <td>
+                        {{ form.password(value=current_user.password) }}
+                        <ul>
+                              {% for error in form.password.errors %}
+                              <li>{{ error }}</li>
+                              {%endfor%}
+                        </ul>
+                  </td>
+            </tr>
 
             <tr>
-                        <td>
-                              {{ form.iban.label }}
-                              <ul>
-                                    {% for error in form.iban.errors %}
-                                    <li>{{ error }}</li>
-                                    {%endfor%}
-                              </ul>
-                        </td>
-                        <td>
-                              {{ form.iban(value=current_user.iban) }}
-                        </td>
-                  </tr>
+                  <td>
+                        {{ form.iban.label }}
+                        <ul>
+                              {% for error in form.iban.errors %}
+                              <li>{{ error }}</li>
+                              {%endfor%}
+                        </ul>
+                  </td>
+                  <td>
+                        {{ form.iban(value=current_user.iban) }}
+                  </td>
+            </tr>
             <tr>
                   <td colspan="2">
                         <input type="submit" value="Tallenna" />
@@ -66,9 +66,8 @@
             </tr>
       </table>
 </form><br>
-<form method="POST" action="{{ url_for('account_delete') }}"
-    onsubmit="return confirm('Haluatko varmasti poistaa käyttäjän? ' +
+<form method="POST" action="{{ url_for('account_delete') }}" onsubmit="return confirm('Haluatko varmasti poistaa käyttäjän? ' +
     'Tämä poistaa kaikki ilmoittautumisesi sekä kurssisi.');">
-    <input type="submit" value="Poista käyttäjä"/>
+      <input type="submit" value="Poista käyttäjä" />
 </form>
 {% endblock %}

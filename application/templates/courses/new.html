@@ -4,53 +4,47 @@
 <form method="POST" action="{{ url_for('courses_create') }}">
   <table>
     <tr>
-        <h1>Uusi kurssi</h1>
-        {{ form.name.label }} <br>
-        {{ form.name }} <br>
-        <ul>
-          {% for error in form.name.errors %}
-          <li>{{ error }}</li>
-          {%endfor%}
-        </ul>
-        {{ form.location.label }} <br>
-        {{ form.location }} <br> 
-        <ul>
-          {% for error in form.location.errors %}
-          <li>{{ error }}</li>
-          {%endfor%}
-        </ul>
-        <div class = "form-field-item">
-            <p>Alkaa</p>
-            <input 
-              name="startingDate"
-              type="date"
-            >
-          </div><br>
-          <div class = "form-field-item">
-            <p>Loppuu</p>
-            <input 
-              name="endingDate"
-              type="date"
-            >     
-          </div><br>
-          {% for error in form.startingDate.errors %}
-          <li>{{ error }}</li>
-          {%endfor%}
-        </ul>
-        {{ form.description.label }} <br>
-        {{ form.description(cols="50",rows="10") }} <br>
-        <ul>
-          {% for error in form.description.errors %}
-          <li>{{ error }}</li>
-          {%endfor%}
-        </ul>
-        {{ form.price.label }} <br>
-        {{ form.price }}€ <br><br>
-        <ul>
-          {% for error in form.price.errors %}
-          <li>{{ error }}</li>
-          {%endfor%}
-        </ul>
+      <h1>Uusi kurssi</h1>
+      {{ form.name.label }} <br>
+      {{ form.name }} <br>
+      <ul>
+        {% for error in form.name.errors %}
+        <li>{{ error }}</li>
+        {%endfor%}
+      </ul>
+      {{ form.location.label }} <br>
+      {{ form.location }} <br>
+      <ul>
+        {% for error in form.location.errors %}
+        <li>{{ error }}</li>
+        {%endfor%}
+      </ul>
+      <div class="form-field-item">
+        <p>Alkaa</p>
+        <input name="startingDate" type="date">
+      </div><br>
+      <div class="form-field-item">
+        <p>Loppuu</p>
+        <input name="endingDate" type="date">
+      </div><br>
+      {% for error in form.startingDate.errors %}
+      <li>{{ error }}</li>
+      {%endfor%}
+      </ul>
+      {{ form.description.label }} <br>
+      {{ form.description(cols="50",rows="10") }} <br>
+      <ul>
+        {% for error in form.description.errors %}
+        <li>{{ error }}</li>
+        {%endfor%}
+      </ul>
+      {{ form.price.label }} <br>
+      {{ form.price }}€ <br><br>
+      <ul>
+        {% for error in form.price.errors %}
+        <li>{{ error }}</li>
+        {%endfor%}
+      </ul>
       </ul>
       {{ form.organizerIban.label }} <br>
       {{ form.organizerIban(value=current_user.iban) }}
@@ -61,9 +55,9 @@
       </ul>
     </tr>
     <tr>
-<td colspan="2">
-  <input type="submit" value="Lisää kurssi!"/>
-</td>
+      <td colspan="2">
+        <input type="submit" value="Lisää kurssi!" />
+      </td>
     </tr>
 </form>
 {% endblock %}

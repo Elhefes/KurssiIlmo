@@ -13,8 +13,10 @@ class Course(db.Model):
     description = db.Column(db.String(144), nullable=False)
     price = db.Column(db.Float)
     organizerIban = db.Column(db.String(144), nullable=False)
-    account_id = db.Column(db.Integer, db.ForeignKey('account.id'),
+    account_id = db.Column(db.Integer, db.ForeignKey('account.id', ondelete = 'CASCADE'),
                            nullable=False)
+
+    
 
     def __init__(self, name, location, startingDate, endingDate, description, price, organizerIban):
         self.name = name
@@ -54,15 +56,6 @@ class Course(db.Model):
         for row in res:
             return row[0]
 
-    def get_enrollees(self):
-        stmt = text("SELECT Account.name FROM Account "
-                    "LEFT JOIN Enrolment ON Enrolment.account_id = Account.id "
-                    "WHERE Enrolment.course_id = :id "
-                    "GROUP BY Account.name").params(id=self.id)
-        res = db.engine.execute(stmt).fetchall()
-        result = [r[0] for r in res]
-        return result
-
     def has_user_enrolled(self):
         stmt = text("SELECT COUNT(*) FROM Enrolment "
                     "WHERE account_id = :accountId "
@@ -72,11 +65,3 @@ class Course(db.Model):
             if (str(row[0]) == "1"):
                return True
         return False
-
-    def courses_by_price_min():
-        stmt = text("SELECT * FROM Course ORDER BY course.price")
-        res = db.engine.execute(stmt)
-        result = []
-        for row in res:
-            result.append(row)
-            

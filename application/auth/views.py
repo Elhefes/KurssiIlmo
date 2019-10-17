@@ -76,6 +76,7 @@ def auth_logout():
 @app.route("/auth/delete/", methods=["POST"])
 @login_required
 def account_delete():
+
     e = Enrolment.query.filter_by(account_id = current_user.id)
     for enrolment in e:
         ownInvoice = Invoice.query.filter_by(enrolment_id = enrolment.id).first()
@@ -87,13 +88,11 @@ def account_delete():
         e = Enrolment.query.filter_by(course_id = course.id)
         for enrolment in e:
             ownInvoice = Invoice.query.filter_by(enrolment_id = enrolment.id).first()
-            i = Invoice.query.get(ownInvoice)
-            db.session.delete(i)
+            db.session.delete(ownInvoice)
             db.session().delete(enrolment)
         db.session().delete(course)
 
     u = User.query.get(current_user.id)
     db.session.delete(u)
     db.session().commit()
-  
     return redirect(url_for("index"))

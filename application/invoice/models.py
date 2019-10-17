@@ -6,7 +6,7 @@ class Invoice(db.Model):
     __tablename__ = "invoice"
   
     id = db.Column(db.Integer, primary_key=True)
-    enrolment_id = db.Column(db.Integer, db.ForeignKey('enrolment.id'),
+    enrolment_id = db.Column(db.Integer, db.ForeignKey('enrolment.id', ondelete = 'CASCADE'),
                            nullable=False)
     price = db.Column(db.Float)
     paid = db.Column(db.Boolean, nullable=False)

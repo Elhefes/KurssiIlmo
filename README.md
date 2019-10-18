@@ -7,11 +7,11 @@ Käyttäjänimi  | Salasana
 testi  | kayttaja
 
 
-Rekisteröitymisen/kirjautumisen jälkeen käyttäjä pääsee selaamaan kurssivalikoimaa, tarkastelemaan tarkemmin kurssitietoja sekä ilmoittautumaan itselleen mieluisille kursseille. Mikäli kurssi on maksullinen, käyttäjä saa "laskun" jossa näkyy maksun saajan tilinumero sekä hinta. Kun maksu on suoritettu, kurssin perustaja voi viimeistellä ilmoittautumisen.
+Rekisteröitymisen/kirjautumisen jälkeen käyttäjä pääsee selaamaan kurssivalikoimaa, tarkastelemaan tarkemmin kurssitietoja sekä ilmoittautumaan itselleen mieluisille kursseille. Mikäli kurssi on maksullinen, käyttäjä saa "laskun" jossa näkyy maksun saajan tilinumero sekä hinta. Kun maksu on suoritettu, kurssin järjestäjä näkee että maksu on toteutunut.
 
 Kuka tahansa voi myös luoda omia kursseja. Se tapahtuu ohjelmassa erilaisella lomakkeella, johon syötetään kurssin tiedot, kuten nimi, paikka, aika sekä kurssin kuvaus ja hinta. Sovelluksen käyttäjät pystyvät myös näkemään kurssille ilmoittautuneet henkilöt.
 
-Käyttäjä voi myös tarkastella omia ilmoittautumisiaan. Hän voi myöskin poistaa omia ilmoittautumisiaan.
+Käyttäjä voi myös tarkastella omia ilmoittautumisiaan sekä laskujaan. Hän voi myöskin poistaa omia ilmoittautumisiaan.
 
 
 ## Dokumentaatio

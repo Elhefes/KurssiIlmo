@@ -17,8 +17,8 @@ Käyttäjä voi myös tarkastella omia ilmoittautumisiaan. Hän voi myöskin poi
 ## Dokumentaatio
 
 * [Käyttöohje](https://github.com/henripalin/KurssiIlmo/blob/master/dokumentaatio/k%C3%A4ytt%C3%B6ohje.md)
-* [Alustava tietokantakaavio](https://github.com/henripalin/KurssiIlmo/blob/master/dokumentaatio/tietokantakaavio.png)
-* [Tietokantataulut](https://github.com/henripalin/KurssiIlmo/blob/master/dokumentaatio/tietokanta.md)
+* [Tietokantakaavio](https://github.com/henripalin/KurssiIlmo/blob/master/dokumentaatio/tietokantakaavio.png)
+* [SQL CREATE TABLE-lauseet](https://github.com/henripalin/KurssiIlmo/blob/master/dokumentaatio/tietokanta.md)
 * [Käyttötapaukset](https://github.com/henripalin/KurssiIlmo/blob/master/dokumentaatio/k%C3%A4ytt%C3%B6tapaukset.md)
 * [Asennusohje](https://github.com/henripalin/KurssiIlmo/blob/master/dokumentaatio/tietokanta.md)
 

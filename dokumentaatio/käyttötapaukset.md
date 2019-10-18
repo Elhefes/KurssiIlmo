@@ -46,3 +46,14 @@ UPDATE course SET name=?, location=?, "startingDate"=?, "endingDate"=?, descript
 ```
 SELECT Account.name FROM Account JOIN Course ON Account.id= Course.account_id WHERE Course.id = ?
 ```
+* poistaa käyttäjänsä
+  * tämä poistaa ensiksi kaikki käyttäjän ilmoittautumiset, omat kurssit (ja niihin ilmoittautumiset), jonka jälkeen poistaa vasta käyttäjän.
+```
+DELETE FROM invoice WHERE invoice.id = ?
+
+DELETE FROM enrolment WHERE enrolment.id = ?
+
+DELETE FROM course WHERE course.id = ?
+
+DELETE FROM account WHERE account.id = ?
+```

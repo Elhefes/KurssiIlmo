@@ -1,11 +1,13 @@
-```CREATE TABLE account (
+```
+CREATE TABLE account (
 	id INTEGER NOT NULL, 
 	name VARCHAR(144) NOT NULL, 
 	username VARCHAR(144) NOT NULL, 
 	password VARCHAR(144) NOT NULL, 
 	iban VARCHAR(144) NOT NULL, 
 	PRIMARY KEY (id)
-);```
+);
+```
 ```
 CREATE TABLE course (
 	id INTEGER NOT NULL, 
@@ -19,7 +21,8 @@ CREATE TABLE course (
 	account_id INTEGER NOT NULL, 
 	PRIMARY KEY (id), 
 	FOREIGN KEY(account_id) REFERENCES account (id) ON DELETE CASCADE
-);```
+);
+```
 ```
 CREATE TABLE enrolment (
 	id INTEGER NOT NULL, 
@@ -29,7 +32,8 @@ CREATE TABLE enrolment (
 	PRIMARY KEY (id), 
 	FOREIGN KEY(course_id) REFERENCES course (id) ON DELETE CASCADE, 
 	FOREIGN KEY(account_id) REFERENCES account (id) ON DELETE CASCADE
-);```
+);
+```
 ```
 CREATE TABLE invoice (
 	id INTEGER NOT NULL, 
@@ -39,5 +43,6 @@ CREATE TABLE invoice (
 	PRIMARY KEY (id), 
 	FOREIGN KEY(enrolment_id) REFERENCES enrolment (id) ON DELETE CASCADE, 
 	CHECK (paid IN (0, 1))
-);```
+);
+```
 

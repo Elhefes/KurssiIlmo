@@ -16,7 +16,7 @@ class Course(db.Model):
     account_id = db.Column(db.Integer, db.ForeignKey('account.id', ondelete = 'CASCADE'),
                            nullable=False)
 
-    
+    enrolments = db.relationship("Enrolment", backref='course', lazy=True, cascade = "all, delete-orphan")
 
     def __init__(self, name, location, startingDate, endingDate, description, price, organizerIban):
         self.name = name

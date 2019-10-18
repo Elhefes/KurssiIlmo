@@ -40,7 +40,9 @@
         <tr>
           <th><b>Osallistujat</b><br></th>
           {% if current_user.id == course.account_id %}
+          {% if course.price > 0 %}
           <th><b>Maksanut</b><br></th>
+          {% endif %}
           {% endif %}
         </tr>
         {% for e in enrolments %}
@@ -52,11 +54,13 @@
           {% endif %}
           {% if current_user.id == course.account_id %}
           <td>
+            {% if course.price > 0 %}
             {% if e.course_id == course.id %}
             {% if e.is_invoice_paid() == True %}
             Kyllä
             {% else %}
             Ei
+            {% endif %}
             {% endif %}
             {% endif %}
           </td>

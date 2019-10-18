@@ -46,6 +46,10 @@ UPDATE course SET name=?, location=?, "startingDate"=?, "endingDate"=?, descript
 ```
 SELECT Account.name FROM Account JOIN Course ON Account.id= Course.account_id WHERE Course.id = ?
 ```
+* nähdä, kuinka paljon ihmisiä on ilmoittautunut kurssille
+```
+SELECT COUNT(*) FROM Account LEFT JOIN Enrolment ON Enrolment.account_id = Account.id WHERE Enrolment.course_id = ?
+```
 * poistaa käyttäjänsä
   * tämä poistaa ensiksi kaikki käyttäjän ilmoittautumiset, omat kurssit (ja niihin ilmoittautumiset), jonka jälkeen poistaa vasta käyttäjän.
 ```
